@@ -1,0 +1,13 @@
+apiVersion: app.redislabs.com/v1alpha1
+kind: RedisEnterpriseDatabase
+metadata:
+  name: db
+spec:
+  memorySize: 512mb
+  redisEnterpriseCluster: 
+    name: rec
+  modulesList:
+    - name: search
+      version: "2.8.27"
+    - name: ReJSON
+      version: "2.6.17"
