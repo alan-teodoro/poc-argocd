@@ -6,8 +6,8 @@ spec:
   memorySize: 512mb
   redisEnterpriseCluster: 
     name: rec
-  modulesList:
-    - name: search
-      version: "2.8.27"
-    - name: ReJSON
-      version: "2.6.17"
+modulesList:
+  - name: search
+    version: "2.10.7"
+  - name: ReJSON
+    version: "2.10.6"
