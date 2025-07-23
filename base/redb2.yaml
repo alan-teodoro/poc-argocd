@@ -1,13 +1,9 @@
 apiVersion: app.redislabs.com/v1alpha1
 kind: RedisEnterpriseDatabase
 metadata:
-  name: db-old
+  name: db
 spec:
   memorySize: 512mb
   redisEnterpriseCluster: 
     name: rec
-  modulesList:
-    - name: search
-      version: "2.10.7"
-    - name: ReJSON
-      version: "2.10.6"
+  databaseSecretName: shared-db-secret

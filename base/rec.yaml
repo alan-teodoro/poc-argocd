@@ -3,4 +3,14 @@ kind: RedisEnterpriseCluster
 metadata:
   name: rec
 spec:
-  nodes: 3
+  nodes: 1
+  redisEnterpriseImageSpec:
+    imagePullPolicy: Always
+  uiServiceType: NodePort
+  persistentSpec:
+    enabled: false
+  redisEnterpriseNodeResources:
+    limits:
+      memory: 4Gi
+    requests:
+      memory: 4Gi
