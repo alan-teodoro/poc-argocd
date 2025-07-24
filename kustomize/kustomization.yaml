@@ -1,2 +1,5 @@
 resources:
-  - overlays/all-dbs
+  - base/rec.yaml
+  - base/secret.yaml
+  - overlays/db1
+  - overlays/db2
