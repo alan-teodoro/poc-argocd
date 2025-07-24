@@ -5,6 +5,7 @@ metadata:
   namespace: redis
 spec:
   memorySize: 512mb
+  databasePort: 12002
   redisEnterpriseCluster: 
     name: rec
   databaseSecretName: shared-db-secret
