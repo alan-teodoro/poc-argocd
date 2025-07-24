@@ -1,5 +1,5 @@
 resources:
-  - ../../base
+  - ../../base/redb.yaml
 
 namePrefix: db1- # ou db2-
 
