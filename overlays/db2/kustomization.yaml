@@ -14,7 +14,7 @@ replacements:
           - spec.memorySize
   - source:
       kind: ConfigMap
-      name: db1-db-config
+      name: db2-db-config
       fieldPath: data.databasePort
     targets:
       - select:
@@ -23,7 +23,7 @@ replacements:
           - spec.databasePort
   - source:
       kind: ConfigMap
-      name: db1-db-config
+      name: db2-db-config
       fieldPath: data.databaseSecretName
     targets:
       - select:
@@ -32,7 +32,7 @@ replacements:
           - spec.databaseSecretName
   - source:
       kind: ConfigMap
-      name: db1-db-config
+      name: db2-db-config
       fieldPath: metadata.name
     targets:
       - select:

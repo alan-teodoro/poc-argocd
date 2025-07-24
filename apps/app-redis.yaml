@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/alan-teodoro/poc-argocd'
     targetRevision: HEAD
-    path: base
+    path: overlays/all-dbs
   destination:
     server: https://kubernetes.default.svc
     namespace: default
