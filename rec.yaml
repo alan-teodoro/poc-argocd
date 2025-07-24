@@ -1,0 +1,11 @@
+apiVersion: app.redislabs.com/v1
+kind: RedisEnterpriseCluster
+metadata:
+  name: rec
+  namespace: redis
+spec:
+  nodes: 3
+  redisEnterpriseImageSpec:
+    imagePullPolicy: IfNotPresent
+  persistentSpec:
+    enabled: true
