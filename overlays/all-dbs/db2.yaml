@@ -9,5 +9,5 @@ spec:
     name: rec
   databaseSecretName: shared-db-secret
   databasePort: 13000
-  shardCount: 1
+  shardCount: 2
   replication: false
