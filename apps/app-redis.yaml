@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: redis-all-dbs
+  name: redis-app
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/alan-teodoro/poc-argocd
+    repoURL: 'https://github.com/alan-teodoro/poc-argocd'
     targetRevision: HEAD
-    path: overlays/all-dbs
+    path: base
   destination:
     server: https://kubernetes.default.svc
-    namespace: redis
+    namespace: default
   syncPolicy:
     automated:
       selfHeal: true
