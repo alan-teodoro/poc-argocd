@@ -1,4 +1,4 @@
 resources:
   - secret.yaml
   - rec.yaml
-  - recb.yaml
+  - redb.yaml
