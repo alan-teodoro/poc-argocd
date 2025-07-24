@@ -1,0 +1,11 @@
+apiVersion: app.redislabs.com/v1
+kind: RedisEnterpriseCluster
+metadata:
+  name: {{ .Values.name }}
+  namespace: redis
+spec:
+  nodes: {{ .Values.nodes }}
+  redisEnterpriseImageSpec:
+    imagePullPolicy: IfNotPresent
+  persistentSpec:
+    enabled: true
