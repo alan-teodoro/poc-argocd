@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db2-db-config
+data:
+  memorySize: 256mb
+  databasePort: "12001"
+  databaseSecretName: shared-db-secret

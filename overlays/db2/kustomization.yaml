@@ -1,19 +1,11 @@
 resources:
   - ../../base/redb.yaml
-
-namePrefix: db2- # ou db2-
-
-configMapGenerator:
-  - name: db-config
-    literals:
-      - memorySize=512mb
-      - databasePort=13000
-      - databaseSecretName=shared-db-secret
+  - db-config.yaml
 
 replacements:
   - source:
       kind: ConfigMap
-      name: db-config
+      name: db2-db-config
       fieldPath: data.memorySize
     targets:
       - select:
@@ -22,7 +14,7 @@ replacements:
           - spec.memorySize
   - source:
       kind: ConfigMap
-      name: db-config
+      name: db1-db-config
       fieldPath: data.databasePort
     targets:
       - select:
@@ -31,13 +23,19 @@ replacements:
           - spec.databasePort
   - source:
       kind: ConfigMap
-      name: db-config
+      name: db1-db-config
       fieldPath: data.databaseSecretName
     targets:
       - select:
           kind: RedisEnterpriseDatabase
         fieldPaths:
           - spec.databaseSecretName
-
-generatorOptions:
-  disableNameSuffixHash: true
+  - source:
+      kind: ConfigMap
+      name: db1-db-config
+      fieldPath: metadata.name
+    targets:
+      - select:
+          kind: RedisEnterpriseDatabase
+        fieldPaths:
+          - metadata.name

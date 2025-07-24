@@ -1,4 +1,3 @@
 resources:
   - rec.yaml
   - secret.yaml
-  - redb.yaml  # ou outros recursos da base

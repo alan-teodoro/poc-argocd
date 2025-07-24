@@ -1,7 +1,7 @@
 apiVersion: app.redislabs.com/v1alpha1
 kind: RedisEnterpriseDatabase
 metadata:
-  name: db
+  name: replace-me
 spec:
   memorySize: replace-me
   databasePort: 0
