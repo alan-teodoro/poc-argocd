@@ -1,2 +1,40 @@
 resources:
-  - rec.yaml
+  - redb.yaml
+
+configMapGenerator:
+  - name: dummy # necessário para ativar vars
+    literals:
+      - dummy=dummy
+
+vars:
+  - name: db_name
+    objref:
+      kind: ConfigMap
+      name: dummy
+      apiVersion: v1
+    fieldref:
+      fieldpath: metadata.annotations.db_name
+
+  - name: memory_size
+    objref:
+      kind: ConfigMap
+      name: dummy
+      apiVersion: v1
+    fieldref:
+      fieldpath: metadata.annotations.memory_size
+
+  - name: database_port
+    objref:
+      kind: ConfigMap
+      name: dummy
+      apiVersion: v1
+    fieldref:
+      fieldpath: metadata.annotations.database_port
+
+  - name: secret_name
+    objref:
+      kind: ConfigMap
+      name: dummy
+      apiVersion: v1
+    fieldref:
+      fieldpath: metadata.annotations.secret_name

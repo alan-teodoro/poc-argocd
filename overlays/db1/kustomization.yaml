@@ -1,0 +1,13 @@
+resources:
+  - ../../base
+
+configurations:
+  - kustomize.config.yaml
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+configMapGenerator:
+  - name: dummy
+    envs:
+      - kustomize.env
