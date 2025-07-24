@@ -8,9 +8,10 @@ spec:
   source:
     repoURL: https://github.com/alan-teodoro/poc-argocd
     targetRevision: HEAD
-    path: overlays
-    directory:
-      recurse: true
+    path: charts/redis-database
+    helm:
+      valueFiles:
+        - overlays/db1/values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: redis
