@@ -1,11 +1,13 @@
 apiVersion: app.redislabs.com/v1alpha1
 kind: RedisEnterpriseDatabase
 metadata:
-  name: db
+  name: db2
   namespace: redis
 spec:
   memorySize: 512mb
-  databasePort: 12000
-  redisEnterpriseCluster: 
+  redisEnterpriseCluster:
     name: rec
   databaseSecretName: shared-db-secret
+  databasePort: 13000
+  shardCount: 1
+  replication: false

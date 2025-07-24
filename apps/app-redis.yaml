@@ -8,10 +8,10 @@ spec:
   source:
     repoURL: 'https://github.com/alan-teodoro/poc-argocd'
     targetRevision: HEAD
-    path: base
+    path: overlays/all-dbs  # << ALTERADO AQUI
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: redis        # << RECOMENDADO: use o namespace real do seu Redis
   syncPolicy:
     automated:
       selfHeal: true

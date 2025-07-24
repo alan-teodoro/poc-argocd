@@ -1,0 +1,5 @@
+resources:
+  - ../../base
+  - db1.yaml
+  - db2.yaml
+  - secret.yaml
