@@ -1,2 +1,3 @@
 resources:
-  - redb.yaml
+  - rec.yaml
+  - redb.yaml  # ou outros recursos da base
