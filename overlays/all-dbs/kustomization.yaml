@@ -1,5 +1,3 @@
 resources:
-  - ../../base/rec.yaml
-  - ../../base/secrets.yaml
   - ../db1
   - ../db2
