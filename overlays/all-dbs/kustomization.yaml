@@ -1,3 +1,4 @@
 resources:
+  - ../../base
   - ../db1
   - ../db2
