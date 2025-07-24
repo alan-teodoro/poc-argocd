@@ -1,5 +1,5 @@
 resources:
-  - ../../base/redb.yaml
+  - redb.yaml
   - db-config.yaml
 
 replacements:
