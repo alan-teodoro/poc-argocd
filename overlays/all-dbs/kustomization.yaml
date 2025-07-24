@@ -1,5 +1,3 @@
 resources:
   - ../db1
   - ../db2
-  - rec.yaml
-  - shared-db-secret.yaml
