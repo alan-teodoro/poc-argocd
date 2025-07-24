@@ -1,10 +1,10 @@
 apiVersion: app.redislabs.com/v1alpha1
 kind: RedisEnterpriseDatabase
 metadata:
-  name: $(db_name)
+  name: db
 spec:
-  memorySize: $(memory_size)
-  databasePort: $(database_port)
-  databaseSecretName: $(secret_name)
-  shardCount: 1
-  replication: false
+  memorySize: replace-me
+  databasePort: 0
+  databaseSecretName: replace-me
+  redisEnterpriseCluster:
+    name: rec

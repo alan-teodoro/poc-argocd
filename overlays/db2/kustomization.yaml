@@ -1,13 +1,12 @@
 resources:
   - ../../base
 
-configurations:
-  - kustomize.config.yaml
+configMapGenerator:
+  - name: db-config
+    literals:
+      - memorySize=1gb
+      - databasePort=13000
+      - databaseSecretName=shared-db-secret
 
 generatorOptions:
   disableNameSuffixHash: true
-
-configMapGenerator:
-  - name: dummy
-    envs:
-      - kustomize.env
