@@ -1,4 +1,0 @@
-name: db3
-memorySize: 512mb
-databasePort: 12003
-databaseSecretName: shared-db-secret
