@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/alan-teodoro/poc-argocd     
+    repoURL: https://github.com/alan-teodoro/poc-argocd
     targetRevision: HEAD
     path: charts/redis-cluster
   destination:
