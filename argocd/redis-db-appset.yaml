@@ -11,6 +11,8 @@ spec:
         valueFile: overlays/db1/values.yaml
       - name: db2
         valueFile: overlays/db2/values.yaml
+      - name: db3
+        valueFile: overlays/db3/values.yaml        
   template:
     metadata:
       name: redis-{{name}}
