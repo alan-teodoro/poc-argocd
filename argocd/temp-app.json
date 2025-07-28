@@ -1,0 +1,470 @@
+{
+  "apiVersion": "argoproj.io/v1alpha1",
+  "kind": "Application",
+  "metadata": {
+    "annotations": {
+      "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"Application\",\"metadata\":{\"annotations\":{},\"name\":\"redis-operator\",\"namespace\":\"argocd\"},\"spec\":{\"destination\":{\"namespace\":\"redis\",\"server\":\"https://kubernetes.default.svc\"},\"project\":\"default\",\"source\":{\"chart\":\"redis-enterprise-operator\",\"helm\":{\"values\":\"image: redislabs/operator:7.22.0-15\\n\"},\"repoURL\":\"https://helm.redis.io/\",\"targetRevision\":\"7.22.0-15\"},\"syncPolicy\":{\"automated\":{\"prune\":true,\"selfHeal\":true}}}}\n"
+    },
+    "creationTimestamp": "2025-07-25T12:33:48Z",
+    "deletionGracePeriodSeconds": 0,
+    "deletionTimestamp": "2025-07-25T16:01:43Z",
+    "generation": 1191,
+    "name": "redis-operator",
+    "namespace": "argocd",
+    "resourceVersion": "194197",
+    "uid": "c51742c3-3656-47be-acfc-bab5bc010464"
+  },
+  "spec": {
+    "destination": {
+      "namespace": "redis",
+      "server": "https://kubernetes.default.svc"
+    },
+    "project": "default",
+    "source": {
+      "chart": "redis-enterprise-operator",
+      "helm": {
+        "values": "image: redislabs/operator:7.22.0-15\n"
+      },
+      "repoURL": "https://helm.redis.io/",
+      "targetRevision": "7.22.0-15"
+    },
+    "syncPolicy": {
+      "automated": {
+        "prune": true,
+        "selfHeal": true
+      }
+    }
+  },
+  "status": {
+    "conditions": [
+      {
+        "lastTransitionTime": "2025-07-28T18:25:35Z",
+        "message": "namespaces \"redis\" not found",
+        "type": "DeletionError"
+      }
+    ],
+    "controllerNamespace": "argocd",
+    "health": {
+      "lastTransitionTime": "2025-07-28T18:14:17Z",
+      "status": "Missing"
+    },
+    "history": [
+      {
+        "deployStartedAt": "2025-07-25T12:33:49Z",
+        "deployedAt": "2025-07-25T12:34:17Z",
+        "id": 0,
+        "initiatedBy": {
+          "automated": true
+        },
+        "revision": "7.22.0-15",
+        "source": {
+          "chart": "redis-enterprise-operator",
+          "helm": {
+            "values": "image: redislabs/operator:7.22.0-15\n"
+          },
+          "repoURL": "https://helm.redis.io/",
+          "targetRevision": "7.22.0-15"
+        }
+      },
+      {
+        "deployStartedAt": "2025-07-25T13:18:12Z",
+        "deployedAt": "2025-07-25T13:18:20Z",
+        "id": 1,
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "revision": "7.22.0-15",
+        "source": {
+          "chart": "redis-enterprise-operator",
+          "helm": {
+            "values": "image: redislabs/operator:7.22.0-15\n"
+          },
+          "repoURL": "https://helm.redis.io/",
+          "targetRevision": "7.22.0-15"
+        }
+      },
+      {
+        "deployStartedAt": "2025-07-25T14:36:07Z",
+        "deployedAt": "2025-07-25T14:36:15Z",
+        "id": 2,
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "revision": "7.22.0-15",
+        "source": {
+          "chart": "redis-enterprise-operator",
+          "helm": {
+            "values": "image: redislabs/operator:7.22.0-15\n"
+          },
+          "repoURL": "https://helm.redis.io/",
+          "targetRevision": "7.22.0-15"
+        }
+      },
+      {
+        "deployStartedAt": "2025-07-25T14:38:31Z",
+        "deployedAt": "2025-07-25T14:38:38Z",
+        "id": 3,
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "revision": "7.22.0-15",
+        "source": {
+          "chart": "redis-enterprise-operator",
+          "helm": {
+            "values": "image: redislabs/operator:7.22.0-15\n"
+          },
+          "repoURL": "https://helm.redis.io/",
+          "targetRevision": "7.22.0-15"
+        }
+      },
+      {
+        "deployStartedAt": "2025-07-25T14:41:17Z",
+        "deployedAt": "2025-07-25T14:41:24Z",
+        "id": 4,
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "revision": "7.22.0-15",
+        "source": {
+          "chart": "redis-enterprise-operator",
+          "helm": {
+            "values": "image: redislabs/operator:7.22.0-15\n"
+          },
+          "repoURL": "https://helm.redis.io/",
+          "targetRevision": "7.22.0-15"
+        }
+      },
+      {
+        "deployStartedAt": "2025-07-25T14:45:01Z",
+        "deployedAt": "2025-07-25T14:45:09Z",
+        "id": 5,
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "revision": "7.22.0-15",
+        "source": {
+          "chart": "redis-enterprise-operator",
+          "helm": {
+            "values": "image: redislabs/operator:7.22.0-15\n"
+          },
+          "repoURL": "https://helm.redis.io/",
+          "targetRevision": "7.22.0-15"
+        }
+      },
+      {
+        "deployStartedAt": "2025-07-25T14:45:52Z",
+        "deployedAt": "2025-07-25T14:46:00Z",
+        "id": 6,
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "revision": "7.22.0-15",
+        "source": {
+          "chart": "redis-enterprise-operator",
+          "helm": {
+            "values": "image: redislabs/operator:7.22.0-15\n"
+          },
+          "repoURL": "https://helm.redis.io/",
+          "targetRevision": "7.22.0-15"
+        }
+      },
+      {
+        "deployStartedAt": "2025-07-25T14:49:15Z",
+        "deployedAt": "2025-07-25T14:49:23Z",
+        "id": 7,
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "revision": "7.22.0-15",
+        "source": {
+          "chart": "redis-enterprise-operator",
+          "helm": {
+            "values": "image: redislabs/operator:7.22.0-15\n"
+          },
+          "repoURL": "https://helm.redis.io/",
+          "targetRevision": "7.22.0-15"
+        }
+      },
+      {
+        "deployStartedAt": "2025-07-25T14:49:44Z",
+        "deployedAt": "2025-07-25T14:49:51Z",
+        "id": 8,
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "revision": "7.22.0-15",
+        "source": {
+          "chart": "redis-enterprise-operator",
+          "helm": {
+            "values": "image: redislabs/operator:7.22.0-15\n"
+          },
+          "repoURL": "https://helm.redis.io/",
+          "targetRevision": "7.22.0-15"
+        }
+      }
+    ],
+    "operationState": {
+      "finishedAt": "2025-07-25T14:49:51Z",
+      "message": "successfully synced (all tasks run)",
+      "operation": {
+        "initiatedBy": {
+          "username": "admin"
+        },
+        "retry": {},
+        "sync": {
+          "revision": "7.22.0-15",
+          "syncStrategy": {
+            "hook": {}
+          }
+        }
+      },
+      "phase": "Succeeded",
+      "startedAt": "2025-07-25T14:49:44Z",
+      "syncResult": {
+        "resources": [
+          {
+            "group": "",
+            "hookPhase": "Succeeded",
+            "hookType": "PreSync",
+            "kind": "ServiceAccount",
+            "message": "redis-enterprise-installer created",
+            "name": "redis-enterprise-installer",
+            "namespace": "redis",
+            "syncPhase": "PreSync",
+            "version": "v1"
+          },
+          {
+            "group": "rbac.authorization.k8s.io",
+            "hookPhase": "Succeeded",
+            "hookType": "PreSync",
+            "kind": "ClusterRole",
+            "message": "redis-enterprise-installer created",
+            "name": "redis-enterprise-installer",
+            "namespace": "redis",
+            "syncPhase": "PreSync",
+            "version": "v1"
+          },
+          {
+            "group": "rbac.authorization.k8s.io",
+            "hookPhase": "Succeeded",
+            "hookType": "PreSync",
+            "kind": "ClusterRoleBinding",
+            "message": "redis-enterprise-installer created",
+            "name": "redis-enterprise-installer",
+            "namespace": "redis",
+            "syncPhase": "PreSync",
+            "version": "v1"
+          },
+          {
+            "group": "batch",
+            "hookPhase": "Succeeded",
+            "hookType": "PreSync",
+            "kind": "Job",
+            "message": "job.batch/redis-enterprise-installer created",
+            "name": "redis-enterprise-installer",
+            "namespace": "redis",
+            "syncPhase": "PreSync",
+            "version": "v1"
+          },
+          {
+            "group": "",
+            "hookPhase": "Running",
+            "kind": "ServiceAccount",
+            "message": "serviceaccount/redis-enterprise-operator unchanged",
+            "name": "redis-enterprise-operator",
+            "namespace": "redis",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "",
+            "hookPhase": "Running",
+            "kind": "Secret",
+            "message": "secret/admission-tls unchanged",
+            "name": "admission-tls",
+            "namespace": "redis",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "",
+            "hookPhase": "Running",
+            "kind": "ConfigMap",
+            "message": "configmap/operator-environment-config unchanged",
+            "name": "operator-environment-config",
+            "namespace": "redis",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "rbac.authorization.k8s.io",
+            "hookPhase": "Running",
+            "kind": "Role",
+            "message": "role.rbac.authorization.k8s.io/redis-enterprise-operator reconciled. role.rbac.authorization.k8s.io/redis-enterprise-operator unchanged",
+            "name": "redis-enterprise-operator",
+            "namespace": "redis",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "rbac.authorization.k8s.io",
+            "hookPhase": "Running",
+            "kind": "RoleBinding",
+            "message": "rolebinding.rbac.authorization.k8s.io/redis-enterprise-operator reconciled. rolebinding.rbac.authorization.k8s.io/redis-enterprise-operator unchanged",
+            "name": "redis-enterprise-operator",
+            "namespace": "redis",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "",
+            "hookPhase": "Running",
+            "kind": "Service",
+            "message": "service/admission unchanged",
+            "name": "admission",
+            "namespace": "redis",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "apps",
+            "hookPhase": "Running",
+            "kind": "Deployment",
+            "message": "deployment.apps/redis-enterprise-operator configured",
+            "name": "redis-enterprise-operator",
+            "namespace": "redis",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          },
+          {
+            "group": "admissionregistration.k8s.io",
+            "hookPhase": "Running",
+            "kind": "ValidatingWebhookConfiguration",
+            "message": "validatingwebhookconfiguration.admissionregistration.k8s.io/redis-enterprise-admission-redis configured",
+            "name": "redis-enterprise-admission-redis",
+            "namespace": "redis",
+            "status": "Synced",
+            "syncPhase": "Sync",
+            "version": "v1"
+          }
+        ],
+        "revision": "7.22.0-15",
+        "source": {
+          "chart": "redis-enterprise-operator",
+          "helm": {
+            "values": "image: redislabs/operator:7.22.0-15\n"
+          },
+          "repoURL": "https://helm.redis.io/",
+          "targetRevision": "7.22.0-15"
+        }
+      }
+    },
+    "reconciledAt": "2025-07-28T18:25:41Z",
+    "resourceHealthSource": "appTree",
+    "resources": [
+      {
+        "kind": "ConfigMap",
+        "name": "operator-environment-config",
+        "namespace": "redis",
+        "status": "OutOfSync",
+        "version": "v1"
+      },
+      {
+        "kind": "Secret",
+        "name": "admission-tls",
+        "namespace": "redis",
+        "status": "OutOfSync",
+        "version": "v1"
+      },
+      {
+        "kind": "Service",
+        "name": "admission",
+        "namespace": "redis",
+        "status": "OutOfSync",
+        "version": "v1"
+      },
+      {
+        "kind": "ServiceAccount",
+        "name": "redis-enterprise-operator",
+        "namespace": "redis",
+        "status": "OutOfSync",
+        "version": "v1"
+      },
+      {
+        "group": "admissionregistration.k8s.io",
+        "kind": "ValidatingWebhookConfiguration",
+        "name": "redis-enterprise-admission-redis",
+        "status": "OutOfSync",
+        "version": "v1"
+      },
+      {
+        "group": "apps",
+        "kind": "Deployment",
+        "name": "redis-enterprise-operator",
+        "namespace": "redis",
+        "status": "OutOfSync",
+        "version": "v1"
+      },
+      {
+        "group": "rbac.authorization.k8s.io",
+        "hook": true,
+        "kind": "ClusterRole",
+        "name": "redis-enterprise-uninstaller",
+        "requiresPruning": true,
+        "version": "v1"
+      },
+      {
+        "group": "rbac.authorization.k8s.io",
+        "hook": true,
+        "kind": "ClusterRoleBinding",
+        "name": "redis-enterprise-uninstaller",
+        "requiresPruning": true,
+        "version": "v1"
+      },
+      {
+        "group": "rbac.authorization.k8s.io",
+        "kind": "Role",
+        "name": "redis-enterprise-operator",
+        "namespace": "redis",
+        "status": "OutOfSync",
+        "version": "v1"
+      },
+      {
+        "group": "rbac.authorization.k8s.io",
+        "kind": "RoleBinding",
+        "name": "redis-enterprise-operator",
+        "namespace": "redis",
+        "status": "OutOfSync",
+        "version": "v1"
+      }
+    ],
+    "sourceHydrator": {},
+    "sourceType": "Helm",
+    "summary": {},
+    "sync": {
+      "comparedTo": {
+        "destination": {
+          "namespace": "redis",
+          "server": "https://kubernetes.default.svc"
+        },
+        "source": {
+          "chart": "redis-enterprise-operator",
+          "helm": {
+            "values": "image: redislabs/operator:7.22.0-15\n"
+          },
+          "repoURL": "https://helm.redis.io/",
+          "targetRevision": "7.22.0-15"
+        }
+      },
+      "revision": "7.22.0-15",
+      "status": "OutOfSync"
+    }
+  }
+}
