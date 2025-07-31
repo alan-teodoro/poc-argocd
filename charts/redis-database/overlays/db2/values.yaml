@@ -1,4 +1,4 @@
 name: db2
 memorySize: 768mb
 databasePort: 12001
-databaseSecretName: shared-db-secret
+databaseSecretName: db2-secret

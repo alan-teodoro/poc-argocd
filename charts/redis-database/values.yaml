@@ -1,4 +1,4 @@
 name: db
 memorySize: 512mb
 databasePort: 12000
-databaseSecretName: shared-db-secret
+databaseSecretName: db-secret
