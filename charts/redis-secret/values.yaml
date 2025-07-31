@@ -1,3 +1,2 @@
 secretName: db-secret
-username: admin
-password: mysecretpassword
+vaultSecretPath: secret/data/redis-creds
