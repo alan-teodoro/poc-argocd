@@ -1,0 +1,3 @@
+secretName: db-secret
+username: admin
+password: mysecretpassword

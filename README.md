@@ -13,3 +13,16 @@ To deploy a new `RedisEnterpriseDatabase` with its own secret:
 
 Each overlay will create its own secret with the same credentials but a
 separate name, allowing independent database management.
+
+## Managing Database Credentials
+
+Secrets are also managed through an ApplicationSet. The chart's default values
+define the `username` and `password` shared by all databases. To add credentials
+for a new database:
+
+1. Edit `argocd/redis-secret-appset.yaml` and append the database name under
+   `generators.list.elements`.
+2. Apply the updated ApplicationSet manifest to Argo CD.
+
+The ApplicationSet will create one secret per database named `<db>-secret`
+using the shared credentials.
