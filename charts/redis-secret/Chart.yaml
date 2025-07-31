@@ -1,0 +1,7 @@
+# charts/redis-secret/Chart.yaml
+apiVersion: v2
+name: redis-secret
+description: Helm chart for Redis database secrets
+type: application
+version: 0.1.0
+appVersion: "1.0"
