@@ -15,8 +15,8 @@ The referenced secret must exist. Use the `redis-secret-appset` to create it per
 
 ## Managing Database Credentials
 
-Secrets are also managed through an ApplicationSet. The chart's default values
-define the `username` and `password` shared by all databases. To add credentials
+Secrets are also managed through an ApplicationSet. Each secret is templated as
+an `ExternalSecret` that pulls the credentials from Vault. To add credentials
 for a new database:
 
 1. Edit `argocd/redis-secret-appset.yaml` and append the database name under
@@ -24,4 +24,34 @@ for a new database:
 2. Apply the updated ApplicationSet manifest to Argo CD.
 
 The ApplicationSet will create one secret per database named `<db>-secret`
-using the shared credentials.
+which references the Vault path configured in the chart values.
+
+## Deploying Vault
+
+Deploy HashiCorp Vault using the provided Argo CD Application:
+
+```shell
+kubectl apply -f argocd/vault-app.yaml
+```
+
+This installs the official Helm chart into the `vault` namespace in development
+mode with TLS disabled.
+
+## Using Vault for Database Secrets
+
+Store the Redis credentials under `secret/data/redis-creds` in Vault with keys
+`username` and `password`. The `redis-secret-appset` creates an `ExternalSecret`
+for each database that reads these values via a `ClusterSecretStore` named
+`vault`.
+
+Example Vault policy:
+
+```hcl
+path "secret/data/redis-creds" {
+  capabilities = ["read"]
+}
+```
+
+Grant this policy to the service account used by the External Secrets Operator
+in the `redis` namespace. To add a new database secret, update
+`argocd/redis-secret-appset.yaml` as described above and apply the manifest.
