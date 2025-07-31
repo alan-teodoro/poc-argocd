@@ -44,6 +44,18 @@ Vault:
 kubectl apply -f argocd/vault-secret-store.yaml
 ```
 
+Create the Vault token secret that the `ClusterSecretStore` references:
+
+```shell
+kubectl -n redis create secret generic vault-token --from-literal=token=<VAULT_TOKEN>
+```
+
+Deploy the External Secrets Operator so `ExternalSecret` resources are reconciled:
+
+```shell
+kubectl apply -f argocd/external-secrets-operator.yaml
+```
+
 ## Using Vault for Database Secrets
 
 Store the Redis credentials under `secret/data/redis-creds` in Vault with keys
