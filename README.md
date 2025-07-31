@@ -37,6 +37,13 @@ kubectl apply -f argocd/vault-app.yaml
 This installs the official Helm chart into the `vault` namespace in development
 mode with TLS disabled.
 
+Create a `ClusterSecretStore` named `vault` so the charts can read secrets from
+Vault:
+
+```shell
+kubectl apply -f argocd/vault-secret-store.yaml
+```
+
 ## Using Vault for Database Secrets
 
 Store the Redis credentials under `secret/data/redis-creds` in Vault with keys
