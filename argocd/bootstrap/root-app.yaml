@@ -1,23 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-secrets
+  name: redis-enterprise-stack
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://charts.external-secrets.io
-    chart: external-secrets
-    targetRevision: 0.9.19
-    helm:
-      values: |
-        installCRDs: true
+    repoURL: https://github.com/alan-teodoro/poc-argocd
+    targetRevision: upgrade-test
+    path: argocd/apps
   destination:
     server: https://kubernetes.default.svc
-    namespace: external-secrets
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+

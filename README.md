@@ -1,76 +1,88 @@
-# poc-argocd
+# Redis Enterprise Upgrade Testing with ArgoCD
 
-## Adding Redis Databases via ApplicationSet
+Test Redis Enterprise upgrades using ArgoCD and Helm in a local Kind cluster.
 
-To deploy a new `RedisEnterpriseDatabase`:
+## Overview
 
-1. Create a new overlay directory under `charts/redis-database/overlays/<name>` and add a `values.yaml` file.
-   Set the secret reference using `databaseSecretName: <name>-secret`.
-2. Update `argocd/redis-db-appset.yaml` by adding a new element under
-   `generators.list.elements` with the database `name` and path to the overlay's
-   `values.yaml`.
-3. Apply the modified ApplicationSet manifest to Argo CD.
+- **Initial Version**: Redis Enterprise 7.22.0-17
+- **Target Version**: Redis Enterprise 7.22.2-31
+- **Orchestration**: ArgoCD (GitOps)
+- **Local Testing**: Kind cluster
 
-The referenced secret must exist. Use the `redis-secret-appset` to create it per database.
+## Prerequisites
 
-## Managing Database Credentials
+- [Docker](https://docs.docker.com/get-docker/)
+- [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/)
 
-Secrets are also managed through an ApplicationSet. Each secret is templated as
-an `ExternalSecret` that pulls the credentials from Vault. To add credentials
-for a new database:
+## Quick Start
 
-1. Edit `argocd/redis-secret-appset.yaml` and append the database name under
-   `generators.list.elements`.
-2. Apply the updated ApplicationSet manifest to Argo CD.
+### 1. Create Kind Cluster
 
-The ApplicationSet will create one secret per database named `<db>-secret`
-which references the Vault path configured in the chart values.
-
-## Deploying Vault
-
-Deploy HashiCorp Vault using the provided Argo CD Application:
-
-```shell
-kubectl apply -f argocd/vault-app.yaml
+```bash
+./scripts/01-create-cluster.sh
 ```
 
-This installs the official Helm chart into the `vault` namespace in development
-mode with TLS disabled.
+### 2. Install ArgoCD
 
-Create a `ClusterSecretStore` named `vault` so the charts can read secrets from
-Vault:
-
-```shell
-kubectl apply -f argocd/vault-secret-store.yaml
+```bash
+./scripts/02-install-argocd.sh
 ```
 
-Create the Vault token secret that the `ClusterSecretStore` references:
-
-```shell
-kubectl -n redis create secret generic vault-token --from-literal=token=<VAULT_TOKEN>
+**Access ArgoCD UI:**
+```bash
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+# Open: https://localhost:8080
+# User: admin
+# Password: (shown by install script)
 ```
 
-Deploy the External Secrets Operator so `ExternalSecret` resources are reconciled:
+### 3. Deploy Redis via ArgoCD
 
-```shell
-kubectl apply -f argocd/external-secrets-operator.yaml
+```bash
+kubectl apply -f argocd/bootstrap/root-app.yaml
 ```
 
-## Using Vault for Database Secrets
+ArgoCD will automatically deploy:
+- Redis Enterprise Operator (7.22.0-17)
+- Database Secrets
+- Redis Enterprise Cluster (3 nodes)
+- Two Redis Databases (db1, db2)
 
-Store the Redis credentials under `secret/data/redis-creds` in Vault with keys
-`username` and `password`. The `redis-secret-appset` creates an `ExternalSecret`
-for each database that reads these values via a `ClusterSecretStore` named
-`vault`.
-
-Example Vault policy:
-
-```hcl
-path "secret/data/redis-creds" {
-  capabilities = ["read"]
-}
+**Monitor:**
+```bash
+./scripts/check-status.sh
 ```
 
-Grant this policy to the service account used by the External Secrets Operator
-in the `redis` namespace. To add a new database secret, update
-`argocd/redis-secret-appset.yaml` as described above and apply the manifest.
+### 4. Cleanup
+
+```bash
+./scripts/99-cleanup.sh
+```
+
+## How It Works
+
+ArgoCD manages everything using the **App of Apps** pattern:
+
+1. You apply ONE manifest: `argocd/bootstrap/root-app.yaml`
+2. ArgoCD reads `argocd/apps/` directory
+3. ArgoCD creates all child applications
+4. ArgoCD deploys in order (sync waves):
+   - Wave 1: Operator + Secrets
+   - Wave 2: Cluster
+   - Wave 3: Databases
+
+## Upgrade Process
+
+Edit `argocd/apps/redis-operator.yaml` and change version:
+```yaml
+targetRevision: 7.22.2-31  # Change from 7.22.0-17
+```
+
+Commit and push. ArgoCD will sync automatically.
+
+## References
+
+- [Redis Enterprise Operator](https://docs.redis.com/latest/kubernetes/)
+- [ArgoCD Documentation](https://argo-cd.readthedocs.io/)
+- [Kind Documentation](https://kind.sigs.k8s.io/)

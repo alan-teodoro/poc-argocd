@@ -1,2 +1,0 @@
-secretName: db-secret
-vaultSecretPath: secret/data/redis-creds

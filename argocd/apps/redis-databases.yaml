@@ -1,26 +1,32 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: redis-secret-set
+  name: redis-db-set
   namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   generators:
   - list:
       elements:
       - name: db1
+        valueFile: overlays/db1/values.yaml
       - name: db2
+        valueFile: overlays/db2/values.yaml     
   template:
     metadata:
-      name: redis-secret-{{name}}
+      name: redis-{{name}}
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
     spec:
       project: default
       source:
         repoURL: https://github.com/alan-teodoro/poc-argocd
-        targetRevision: HEAD
-        path: charts/redis-secret
+        targetRevision: upgrade-test
+        path: charts/redis-database
         helm:
-          values: |
-            secretName: {{name}}-secret
+          valueFiles:
+          - '{{valueFile}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: redis
@@ -28,3 +34,6 @@ spec:
         automated:
           prune: true
           selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+
