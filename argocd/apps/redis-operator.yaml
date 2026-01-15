@@ -12,10 +12,10 @@ spec:
   source:
     repoURL: https://helm.redis.io/
     chart: redis-enterprise-operator
-    targetRevision: 7.22.0-17
+    targetRevision: 7.22.2-31
     helm:
       values: |
-        image: redislabs/operator:7.22.0-17
+        image: redislabs/operator:7.22.2-31
   destination:
     server: https://kubernetes.default.svc
     namespace: redis
