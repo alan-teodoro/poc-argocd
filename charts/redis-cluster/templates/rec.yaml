@@ -5,6 +5,9 @@ metadata:
   namespace: redis
 spec:
   nodes: {{ .Values.nodes }}
+  {{- if .Values.redisEnterpriseVersion }}
+  redisEnterpriseVersion: {{ .Values.redisEnterpriseVersion }}
+  {{- end }}
   redisEnterpriseImageSpec:
     imagePullPolicy: IfNotPresent
   persistentSpec:

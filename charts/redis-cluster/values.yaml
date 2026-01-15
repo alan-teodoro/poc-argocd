@@ -1,2 +1,3 @@
 name: rec
 nodes: 3
+redisEnterpriseVersion: "7.22.2-41"
