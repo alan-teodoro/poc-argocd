@@ -1,4 +1,0 @@
-name: db2
-memorySize: 768mb
-databasePort: 12001
-databaseSecretName: db2-secret

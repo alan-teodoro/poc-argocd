@@ -45,9 +45,9 @@ kubectl apply -f argocd/bootstrap/root-app.yaml
 
 ArgoCD will automatically deploy:
 - Redis Enterprise Operator (7.22.0-17)
-- Database Secrets
+- Database Secret
 - Redis Enterprise Cluster (3 nodes)
-- Two Redis Databases (db1, db2)
+- Redis Database (db1)
 
 **Monitor:**
 ```bash
