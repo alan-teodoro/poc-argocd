@@ -1,3 +1,3 @@
 name: rec
 nodes: 3
-versionTag: "7.22.2-41"
+# versionTag: "7.22.2-41"  # Comentado para testar comportamento default do operator
